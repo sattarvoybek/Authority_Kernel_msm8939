@@ -24,6 +24,8 @@
 *.order
 modules.builtin
 *.elf
+*.zip
+*.h
 *.bin
 *.gz
 *.bz2
@@ -33,7 +35,7 @@ modules.builtin
 *.patch
 *.gcno
 dt.img
-Imahe
+Image
 zImage
 build_tomato.sh
 

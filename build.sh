@@ -24,13 +24,13 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 nocol='\033[0m'
 # Modify the following variable if you want to build
-export LD_LIBRARY_PATH="/home/aayushrd7/UBTC/x86_64-linux-gnu/aarch64-linux-android/lib"
-export CROSS_COMPILE="/home/aayushrd7/UBTC/bin/aarch64-linux-android-"
+export LD_LIBRARY_PATH="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/x86_64-linux-gnu/aarch64-linux-android/lib"
+export CROSS_COMPILE="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-"
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="AayushRd7"
 export KBUILD_BUILD_HOST="AutHoRiTy-PoWeR"
-STRIP="/home/aayushrd7/UBTC/bin/aarch64-linux-android-strip"
+STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-strip"
 MODULES_DIR=/home/aayushrd7/Authority_Kernel_msm8939/Tomato
 compile_kernel ()
 {
