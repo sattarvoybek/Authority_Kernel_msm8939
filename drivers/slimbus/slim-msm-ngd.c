@@ -1157,6 +1157,7 @@ static int ngd_slim_rx_msgq_thread(void *data)
 
 		set_current_state(TASK_INTERRUPTIBLE);
 		wait_for_completion_interruptible(notify);
+<<<<<<< HEAD
 
 		txn.dt = SLIM_MSG_DEST_LOGICALADDR;
 		txn.ec = 0;
@@ -1181,6 +1182,18 @@ static int ngd_slim_rx_msgq_thread(void *data)
 					NGD_BASE(dev->ctrl.nr, dev->ver));
 			/* make sure NGD MSG-Q config goes through */
 			mb();
+=======
+		/* 1 irq notification per message */
+		if (dev->use_rx_msgqs != MSM_MSGQ_ENABLED) {
+			msm_slim_rx_dequeue(dev, (u8 *)buffer);
+			ngd_slim_rx(dev, (u8 *)buffer);
+			continue;
+		}
+		ret = msm_slim_rx_msgq_get(dev, buffer, index);
+		if (ret) {
+			SLIM_ERR(dev, "rx_msgq_get() failed 0x%x\n", ret);
+			continue;
+>>>>>>> c2fa24c... Fixed High-Load Average due to Drivers
 		}
 capability_retry:
 		txn.rl = 8;
@@ -1228,7 +1241,7 @@ static int ngd_notify_slaves(void *data)
 
 	while (!kthread_should_stop()) {
 		set_current_state(TASK_INTERRUPTIBLE);
-		wait_for_completion(&dev->qmi.slave_notify);
+		wait_for_completion_interruptible(&dev->qmi.slave_notify);
 		/* Probe devices for first notification */
 		if (!i) {
 			i++;
