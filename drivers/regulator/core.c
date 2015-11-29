@@ -1933,9 +1933,13 @@ int regulator_disable_deferred(struct regulator *regulator, int ms)
 	rdev->deferred_disables++;
 	mutex_unlock(&rdev->mutex);
 
+<<<<<<< HEAD
 	ret = queue_delayed_work(system_power_efficient_wq,
 				 &rdev->disable_work,
 				 msecs_to_jiffies(ms));
+=======
+	ret = queue_delayed_work(system_power_efficient_wq, &rdev->disable_work, msecs_to_jiffies(ms));
+>>>>>>> 9296677... Implemented PowerEfficient WQ for Regulator Core
 	if (ret < 0)
 		return ret;
 	else
