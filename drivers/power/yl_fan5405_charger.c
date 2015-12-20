@@ -1355,8 +1355,13 @@ static void fan5405_external_power_changed(struct power_supply *psy)
                     chip->set_ivbus_max = custom_usb_current;
                 }
                 else {
+<<<<<<< HEAD
                     pr_info("Using custom AC current %d", custom_ac_current);
                     chip->set_ivbus_max = custom_ac_current;
+=======
+                    pr_info("Using custom AC current %d", custom_current);
+                    chip->set_ivbus_max = custom_current;
+>>>>>>> d945a7f... Updated ThunderCharge v1.1 to v2.1
                 }
             }
             else {
