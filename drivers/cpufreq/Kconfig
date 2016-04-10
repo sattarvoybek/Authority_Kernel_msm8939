@@ -76,6 +76,18 @@ config CPU_FREQ_DEFAULT_GOV_POWERSAVE
 	  the frequency statically to the lowest frequency supported by
 	  the CPU.
 
+config CPU_FREQ_DEFAULT_GOV_PMC
+	bool "pmc"
+	select CPU_FREQ_GOV_PMC
+	help
+	  Use the CPUFreq governor 'pmc' as default
+
+config CPU_FREQ_DEFAULT_GOV_SMARTMAX
+	bool "smartmax"
+	select CPU_FREQ_GOV_SMARTMAX
+	help
+	  Use the CPUFreq governor 'smartmax' as default.
+
 config CPU_FREQ_DEFAULT_GOV_USERSPACE
 	bool "userspace"
 	select CPU_FREQ_GOV_USERSPACE
@@ -200,12 +212,6 @@ config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	select CPU_FREQ_GOV_IMPULSE
 	help
 	  Use the CPUFreq governor 'impulse' as default.
-
-config CPU_FREQ_DEFAULT_GOV_SMARTMAX
-	bool "smartmax"
-	select CPU_FREQ_GOV_SMARTMAX
-	help
-	  Use the CPUFreq governor 'smartmax' as default
 	
 config CPU_FREQ_DEFAULT_GOV_BARRY_ALLEN
 	bool "barry_allen"
@@ -243,6 +249,18 @@ config CPU_FREQ_GOV_POWERSAVE
 	  module will be called cpufreq_powersave.
 
 	  If in doubt, say Y.
+
+config CPU_FREQ_GOV_PMC
+ 	 tristate "'pmc' cpufreq policy governor"	
+ 	 select CPU_FREQ_TABLE	
+ 	 help	
+ 	   'smartmax' tweaked for absolute battery
+
+config CPU_FREQ_GOV_SMARTMAX
+	tristate "'smartmax' cpufreq policy governor"
+	select CPU_FREQ_TABLE
+	help
+	 'smartmax' combined ondemand and smartass2
 
 config CPU_FREQ_GOV_ELECTRODEMAND
  	tristate "'electrodemand' cpufreq policy governor"
@@ -472,13 +490,6 @@ config CPU_FREQ_GOV_IMPULSE
     designed for optimized balance between power and performance.
 
     If in doubt, say N.
-
-config CPU_FREQ_GOV_SMARTMAX
-  tristate "'smartmax' cpufreq policy governor"	
-  select CPU_FREQ_TABLE	
-  help	
-    'smartmax' combined ondemand and smartass2
-
 
 config CPU_BOOST
 	tristate "Event base short term CPU freq boost"
