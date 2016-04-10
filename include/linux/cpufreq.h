@@ -512,6 +512,18 @@ extern struct cpufreq_governor cpufreq_gov_intellidemand;
 extern struct cpufreq_governor cpufreq_gov_dynamic_electrodemand;
 #define CPUFREQ_DEFAULT_GOVERNOR (&cpufreq_gov_electrodemand)
 
+#elif defined(CONFIG_CPU_FREQ_GOV_HOTPLUG)
+extern struct cpufreq_governor cpufreq_gov_hotplug;
+#define CPUFREQ_DEFAULT_GOVERNOR (&cpufreq_gov_hotplug)
+
+#elif defined(CONFIG_CPU_FREQ_GOV_LIONFISH)
+extern struct cpufreq_governor cpufreq_gov_lionfish;
+#define CPUFREQ_DEFAULT_GOVERNOR (&cpufreq_gov_lionfish)
+
+#elif defined(CONFIG_CPU_FREQ_GOV_INTEL)
+extern struct cpufreq_governor cpufreq_gov_intel;
+#define CPUFREQ_DEFAULT_GOVERNOR (&cpufreq_gov_intel)
+
 #endif
 
 /*********************************************************************
