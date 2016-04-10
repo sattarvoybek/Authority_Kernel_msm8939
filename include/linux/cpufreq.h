@@ -450,9 +450,9 @@ extern struct cpufreq_governor cpufreq_gov_conservative;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE)
 extern struct cpufreq_governor cpufreq_gov_interactive;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive)
-#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_LIGHTNING)
-extern struct cpufreq_governor cpufreq_gov_lightning;
-#define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_lightning)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_AUTHORITY)
+extern struct cpufreq_governor cpufreq_gov_authority;
+#define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_authority)
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ALUCARD)
 extern struct cpufreq_governor cpufreq_gov_alucard;
 #define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_alucard)
