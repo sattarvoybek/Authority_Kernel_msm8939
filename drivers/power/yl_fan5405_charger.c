@@ -1355,18 +1355,8 @@ static void fan5405_external_power_changed(struct power_supply *psy)
                     chip->set_ivbus_max = custom_usb_current;
                 }
                 else {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    pr_info("Using custom AC current %d", custom_ac_current);
-                    chip->set_ivbus_max = custom_ac_current;
-=======
                     pr_info("Using custom AC current %d", custom_current);
                     chip->set_ivbus_max = custom_current;
->>>>>>> d945a7f... Updated ThunderCharge v1.1 to v2.1
-=======
-                    pr_info("Using custom AC current %d", custom_current);
-                    chip->set_ivbus_max = custom_current;
->>>>>>> d945a7f... Updated ThunderCharge v1.1 to v2.1
                 }
             }
             else {
@@ -1450,7 +1440,7 @@ static int fan5405_parse_dt(struct fan5405_chip *chip)
 		return -EINVAL;
 
 #ifdef CONFIG_THUNDERCHARGE_CONTROL
-	chip->chg_curr_max = custom_ac_current;
+	chip->chg_curr_max = custom_current;
 #else
 	rc = of_property_read_u32(node, "yl,max-charge-current-mA", &chip->chg_curr_max);
 	if (rc < 0)
@@ -1890,3 +1880,4 @@ module_i2c_driver(fan5405_driver);
 MODULE_DESCRIPTION("FAN5405 charger IC driver");
 MODULE_LICENSE("GPL v2");
 MODULE_ALIAS("i2c:fan5405_charger");
+
