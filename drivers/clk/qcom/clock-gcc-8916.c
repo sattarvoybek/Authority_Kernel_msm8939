@@ -582,12 +582,9 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_465_clk[] = {
 	F( 294912000,	   gpll1,   3,	  0,	0),
 	F( 310000000,	   gpll2,   3,	  0,	0),
 	F( 400000000,  gpll0_aux,   2,	  0,	0),
-<<<<<<< HEAD
 	F( 465000000,      gpll2,   2,	  0,	0),
-=======
 	F( 650000000,      gpll2,   2,	  0,	0),
 	F( 750000000,      gpll2,   2,    0,    0),
->>>>>>> 676115f... Overclocked GPU to 750MHz
 	F_END
 };
 
@@ -603,12 +600,9 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk[] = {
 	F( 294912000,	   gpll1,   3,	  0,	0),
 	F( 310000000,	   gpll2,   3,	  0,	0),
 	F( 400000000,  gpll0_aux,   2,	  0,	0),
-<<<<<<< HEAD
 	F( 465000000,      gpll2,   2,	  0,	0),
-=======
 	F( 650000000,      gpll2,   2,    0,    0),
 	F( 750000000,      gpll2,   2,    0,    0),
->>>>>>> 676115f... Overclocked GPU to 750MHz
 	F_END
 };
 
@@ -621,13 +615,10 @@ static struct rcg_clk gfx3d_clk_src = {
 	.c = {
 		.dbg_name = "gfx3d_clk_src",
 		.ops = &clk_ops_rcg,
-<<<<<<< HEAD
 		VDD_DIG_FMAX_MAP3(LOW, 100000000, NOMINAL, 310000000, HIGH,
 			465000000),
-=======
 		VDD_DIG_FMAX_MAP3(LOW, 50000000, NOMINAL, 310000000, HIGH,
 			750000000),
->>>>>>> 676115f... Overclocked GPU to 750MHz
 		CLK_INIT(gfx3d_clk_src.c),
 	},
 };
