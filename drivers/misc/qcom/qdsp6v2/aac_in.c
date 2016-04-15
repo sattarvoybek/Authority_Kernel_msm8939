@@ -253,8 +253,7 @@ static long aac_in_ioctl_shared(struct file *file, unsigned int cmd, void *arg)
 			rc = -EINVAL;
 			break;
 		}
-<<<<<<< HEAD
-=======
+
 		/* For aac-lc, min_bit_rate = min(24Kbps, 0.5*SR*num_chan);
 		max_bi_rate = min(192Kbps, 6*SR*num_chan);
 		min_sample_rate = 8000Hz, max_rate=48000 */
@@ -264,7 +263,6 @@ static long aac_in_ioctl_shared(struct file *file, unsigned int cmd, void *arg)
 			rc = -EINVAL;
 			break;
 		}
->>>>>>> ba787f1... Added support for 320K AAC Encoding
 		enc_cfg->sample_rate = cfg->sample_rate;
 		enc_cfg->channels = cfg->channels;
 		enc_cfg->bit_rate = cfg->bit_rate;
