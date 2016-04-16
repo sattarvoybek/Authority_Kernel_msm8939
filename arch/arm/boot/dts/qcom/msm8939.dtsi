@@ -554,4 +554,5 @@
 
 &bam_dmux {
 	qcom,no-cpu-affinity;
+	qcom,fast-shutdown;
 };
