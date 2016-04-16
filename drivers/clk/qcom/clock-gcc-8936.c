@@ -485,9 +485,7 @@ static struct pll_clk a53ss_cci_pll = {
 static struct pll_freq_tbl apcs_c0_pll_freq[] = {
 	F_APCS_PLL( 998400000,  52, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1113600000,  58, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1209600000,  58, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1497600000,  59, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1651200000,  60, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1200600000,  63, 0x0, 0x1, 0x0, 0x0, 0x0),
 };
 
 static struct pll_clk a53ss_c0_pll = {
@@ -513,7 +511,7 @@ static struct pll_clk a53ss_c0_pll = {
 		.vdd_class = &vdd_sr2_pll,
 		.fmax = (unsigned long [VDD_SR2_PLL_NUM]) {
 			[VDD_SR2_PLL_SVS] = 1000000000,
-			[VDD_SR2_PLL_NOM] = 2000000000,
+			[VDD_SR2_PLL_NOM] = 1900000000,
 		},
 		.num_fmax = VDD_SR2_PLL_NUM,
 		CLK_INIT(a53ss_c0_pll.c),
@@ -532,17 +530,20 @@ static struct pll_freq_tbl apcs_c1_pll_freq[] = {
 	F_APCS_PLL(1036800000, 54, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1113600000, 58, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1190400000, 62, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1209600000, 63, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1200600000, 63, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1267200000, 66, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1344000000, 70, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1363200000, 71, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1420800000, 74, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1459200000, 76, 0x0, 0x1, 0x0, 0x0, 0x0),
 	F_APCS_PLL(1497600000, 78, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1651200000, 80, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(1820000000, 82, 0x0, 0x1, 0x0, 0x0, 0x0),
-	F_APCS_PLL(2000000000, 84, 0x0, 0x1, 0x0, 0x0, 0x0),
-
+	F_APCS_PLL(1536000000, 80, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1574400000, 82, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1612800000, 84, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1632000000, 85, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1651200000, 86, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1689600000, 88, 0x0, 0x1, 0x0, 0x0, 0x0),
+	F_APCS_PLL(1700800000, 89, 0x0, 0x1, 0x0, 0x0, 0x0),
 };
 
 static struct pll_clk a53ss_c1_pll = {
@@ -568,7 +569,7 @@ static struct pll_clk a53ss_c1_pll = {
 		.vdd_class = &vdd_hf_pll,
 		.fmax = (unsigned long [VDD_HF_PLL_NUM]) {
 			[VDD_HF_PLL_SVS] = 1000000000,
-			[VDD_HF_PLL_NOM] = 2500000000,
+			[VDD_HF_PLL_NOM] = 2000000000,
 		},
 		.num_fmax = VDD_HF_PLL_NUM,
 		CLK_INIT(a53ss_c1_pll.c),
@@ -826,7 +827,7 @@ static struct rcg_clk vfe0_clk_src = {
 };
 
 static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk[] = {
-	F(  19200000,	      gcc_xo,   1,	  0,	0),
+	F(  19200000,	   gcc_xo,           1,	  0,	0),
 	F(  50000000,	   gpll0_out_main,  16,	  0,	0),
 	F(  80000000,      gpll0_out_main,  10,	  0,	0),
 	F( 100000000,      gpll0_out_main,   8,	  0,	0),
@@ -834,11 +835,12 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk[] = {
 	F( 200000000,      gpll0_out_main,   4,	  0,	0),
 	F( 220000000,      gpll3_out_main,   5,	  0,	0),
 	F( 266670000,      gpll0_out_main,   3,	  0,	0),
-	F( 310000000,	gpll2_gfx3d,	3,	  0,	0),
+	F( 310000000,	   gpll2_gfx3d,	     3,	  0,	0),
 	F( 400000000,      gpll0_out_main,   2,	  0,	0),
-	F( 465000000,      gpll2_gfx3d,   2,    0,    0),
-	F( 550000000,      gpll3_out_main,   2,    0,    0),
-	F( 650000000,      gpll3_out_main,   2,    0,    0),
+	F( 475000000,      gpll2_gfx3d,      2,   0,    0),
+	F( 550000000,      gpll3_out_main,   2,   0,    0),
+	F( 650000000,      gpll3_out_main,   2,   0,    0),
+	F( 750000000, 	   gpll3_out_main,   2,   0,    0),
 	F_END
 };
 
@@ -851,8 +853,8 @@ static struct rcg_clk gfx3d_clk_src = {
 	.c = {
 		.dbg_name = "gfx3d_clk_src",
 		.ops = &clk_ops_rcg,
-		VDD_DIG_FMAX_MAP4(LOW, 19200000, NOMINAL, 400000000, NOMINAL_PLUS, 465000000, HIGH,
-			650000000),
+		VDD_DIG_FMAX_MAP4(LOW, 50000000, NOMINAL, 310000000, NOMINAL_PLUS, 475000000, HIGH,
+			750000000),
 		CLK_INIT(gfx3d_clk_src.c),
 	},
 };
@@ -3471,16 +3473,10 @@ static int msm_gcc_probe(struct platform_device *pdev)
 		/* Enable GMEM HW Dynamic */
 		regval = 0x0;
 		writel_relaxed(regval, GCC_REG_BASE(GCC_SPARE3_REG));
-	} else {
+	} else
 		ret = of_msm_clock_register(pdev->dev.of_node,
 				msm_clocks_lookup_v1,
 				ARRAY_SIZE(msm_clocks_lookup_v1));
-
-		/* Disable GMEM HW Dynamic */
-		regval = 0x1;
-		writel_relaxed(regval, GCC_REG_BASE(GCC_SPARE3_REG));
-	}
-
 	if (ret)
 		return ret;
 
