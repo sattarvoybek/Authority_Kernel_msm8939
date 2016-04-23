@@ -2587,6 +2587,10 @@ static int cpufreq_notifier_trans(struct notifier_block *nb,
 		rq->cur_freq = new_freq;
 		raw_spin_unlock_irqrestore(&rq->lock, flags);
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of d9ce8c2... Wrong Load Tracking Fixes...
 	return 0;
 }
 
