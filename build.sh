@@ -31,7 +31,8 @@ export SUBARCH=arm64
 export KBUILD_BUILD_USER="AayushRd7"
 export KBUILD_BUILD_HOST="AutHoRiTy-PoWeR"
 STRIP="/home/aayushrd7/UBERTC-aarch64-linux-android-5.3-kernel-1144fd2773c1/bin/aarch64-linux-android-strip"
-MODULES_DIR=/home/aayushrd7/Authority_Kernel_msm8939/Tomato
+MODULES_DIR=/home/aayushrd7/Authority_Kernel_msm8939/common
+OUT_DIR=/home/aayushrd7/Authority_Kernel_msm8939/Tomato
 compile_kernel ()
 {
 echo -e "$blue***********************************************"
@@ -77,6 +78,19 @@ $DTBTOOL -2 -o $KERNEL_DIR/arch/arm64/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts
 compile_kernel
 ;;
 esac
+
+rm -rf $OUT_DIR/AuthorityKernel*.zip
+rm -rf $OUT_DIR/tools/*
+rm -rf $OUT_DIR/system/lib/modules/*
+cp -r $KERNEL_DIR/Authority/tools $OUT_DIR
+cp $KERNEL_DIR/arch/arm64/boot/Image  $OUT_DIR/tools
+cp $KERNEL_DIR/arch/arm64/boot/dt.img  $OUT_DIR/tools
+mv $OUT_DIR/tools/Image $OUT_DIR/tools/zImage
+cp $MODULES_DIR/*.ko $OUT_DIR/system/lib/modules/
+cd $OUT_DIR
+zip -r AuthorityKernel_UBTC-v3.0-$(date +"%Y-%m-%d"-%H%M).zip *
+cd $KERNEL_DIR
+
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo -e "$yellow Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.$nocol"
